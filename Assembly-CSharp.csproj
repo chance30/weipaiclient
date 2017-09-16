@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LangVersion>4</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{DFD00E1A-C122-529B-82A4-A8AF6921C591}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_1_1;UNITY_2017_1;UNITY_2017;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;PLATFORM_ANDROID;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;CROSS_PLATFORM_INPUT;MOBILE_INPUT;UNITY_HAS_GOOGLEVR</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Animations\UI_MicPhoneScript.cs" />
+     <Compile Include="Assets\MY.cs" />
+     <Compile Include="Assets\Script\Exit_App\ExitAppScript.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\ButtonActionScript.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\FinalOverGame.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\GameToolScript.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\MessageBoxScript.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\MyMahjongScript.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\NumberScript.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\Over_Game\finalOverItem.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\Over_Game\GameOverScript.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\Over_Game\SignalOverItemScript.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\Over_Game\yuSetScript.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\playBack\GamePlayBackScript.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\playBack\PlayerItemBackScript.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\PlayerItemScript.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\PlayerResult.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\StartPanelCtrlScript.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\timer.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\VoteScript.cs" />
+     <Compile Include="Assets\Script\Game_Scenes\ZhuMaScript.cs" />
+     <Compile Include="Assets\Script\gameConfig\GameConfig.cs" />
+     <Compile Include="Assets\Script\gameConfig\ServiceErrorListener.cs" />
+     <Compile Include="Assets\Script\Home_Panel_Event\BroadcastScript.cs" />
+     <Compile Include="Assets\Script\Home_Panel_Event\CrateRoomSettingScript.cs" />
+     <Compile Include="Assets\Script\Home_Panel_Event\EnterRoomScript.cs" />
+     <Compile Include="Assets\Script\Home_Panel_Event\HomePanelScript.cs" />
+     <Compile Include="Assets\Script\Home_Panel_Event\LotteryItemScript.cs" />
+     <Compile Include="Assets\Script\Home_Panel_Event\LotteryPanelScript.cs" />
+     <Compile Include="Assets\Script\Home_Panel_Event\PanelRankDialogScript.cs" />
+     <Compile Include="Assets\Script\Home_Panel_Event\RankListItemScript.cs" />
+     <Compile Include="Assets\Script\Home_Panel_Event\RulePanelScript.cs" />
+     <Compile Include="Assets\Script\Home_Panel_Event\ShowUserInfoScript.cs" />
+     <Compile Include="Assets\Script\Home_Panel_Event\ZhanjiItemScript.cs" />
+     <Compile Include="Assets\Script\Home_Panel_Event\ZhanjiPanelScript.cs" />
+     <Compile Include="Assets\Script\Home_Panel_Event\ZhanjiRoomItemScript.cs" />
+     <Compile Include="Assets\Script\InitializationConfigScritp.cs" />
+     <Compile Include="Assets\Script\IOSIpv6.cs" />
+     <Compile Include="Assets\Script\Login_Panle_Event\LoginSystemScript.cs" />
+     <Compile Include="Assets\Script\Login_Panle_Event\LoginTest.cs" />
+     <Compile Include="Assets\Script\mahjongCard\bottomScript.cs" />
+     <Compile Include="Assets\Script\mahjongCard\OtherCardScript.cs" />
+     <Compile Include="Assets\Script\mahjongCard\TopAndBottomCardScript.cs" />
+     <Compile Include="Assets\Script\netManager\ChatRequest.cs" />
+     <Compile Include="Assets\Script\netManager\ChatSocket.cs" />
+     <Compile Include="Assets\Script\netManager\ClientRequest.cs" />
+     <Compile Include="Assets\Script\netManager\ClientResponse.cs" />
+     <Compile Include="Assets\Script\netManager\CustomSocket.cs" />
+     <Compile Include="Assets\Script\netManager\CustomSocket11.cs" />
+     <Compile Include="Assets\Script\netManager\Events\APIS.cs" />
+     <Compile Include="Assets\Script\netManager\Events\SocketEventHandle.cs" />
+     <Compile Include="Assets\Script\netManager\ReConnectScript.cs" />
+     <Compile Include="Assets\Script\netManager\request\CreateRoomRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\CurrentStatusRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\DissoliveRoomRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\GameBackPlayRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\GameReadyRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\GangCardRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\GaveUpRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\GetContactInfoRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\GetGiftRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\HeadRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\HupaiRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\JoinRoomRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\LoginRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\MessageBoxRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\OutRoomRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\PengCardRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\PutOutCardRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\SoundMicInput\LoginChatRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\SoundMicInput\MicInputRequest.cs" />
+     <Compile Include="Assets\Script\netManager\request\ZhanjiRequest.cs" />
+     <Compile Include="Assets\Script\netManager\vo\Account.cs" />
+     <Compile Include="Assets\Script\netManager\vo\AvatarVO.cs" />
+     <Compile Include="Assets\Script\netManager\vo\BackLoginResponse.cs" />
+     <Compile Include="Assets\Script\netManager\vo\BackLoginResponseVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\CardVO.cs" />
+     <Compile Include="Assets\Script\netManager\vo\DateVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\DissoliveRoomRequestVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\DissoliveRoomResponseVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\EmptyClass.cs" />
+     <Compile Include="Assets\Script\netManager\vo\FinalGameEndItemVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\FinalGameEndVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\GameBehaviourVO.cs" />
+     <Compile Include="Assets\Script\netManager\vo\GamePlayBackVO.cs" />
+     <Compile Include="Assets\Script\netManager\vo\GamePlayResponseVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\GangBackVO.cs" />
+     <Compile Include="Assets\Script\netManager\vo\GangNoticeVO.cs" />
+     <Compile Include="Assets\Script\netManager\vo\GangRequestVO.cs" />
+     <Compile Include="Assets\Script\netManager\vo\GiftItemVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\GiftList.cs" />
+     <Compile Include="Assets\Script\netManager\vo\HupaiRequestVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\HupaiResponseItem.cs" />
+     <Compile Include="Assets\Script\netManager\vo\HupaiResponseVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\LastOperationVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\LoginVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\LotteryData.cs" />
+     <Compile Include="Assets\Script\netManager\vo\OtherPengGangBackVO.cs" />
+     <Compile Include="Assets\Script\netManager\vo\OutRoomRequestVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\OutRoomResponseVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\PlayerBackVO.cs" />
+     <Compile Include="Assets\Script\netManager\vo\ReturnOnlineVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\RoomCreateResponseVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\RoomCreateVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\RoomJoinResponseVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\RoomJoinVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\ServiceVersionVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\StartGameVO.cs" />
+     <Compile Include="Assets\Script\netManager\vo\TotalInfo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\Version.cs" />
+     <Compile Include="Assets\Script\netManager\vo\ZhanjiDataItemVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\ZhanjiDataList.cs" />
+     <Compile Include="Assets\Script\netManager\vo\ZhanjiOneRoomData.cs" />
+     <Compile Include="Assets\Script\netManager\vo\ZhanjiRoomDataItem.cs" />
+     <Compile Include="Assets\Script\netManager\vo\ZhanjiRoomDataItemVo.cs" />
+     <Compile Include="Assets\Script\netManager\vo\ZhanjiRoomList.cs" />
+     <Compile Include="Assets\Script\netManager\vo\ZhanjiSearchRequest.cs" />
+     <Compile Include="Assets\Script\soundsCtrl\AudioCtrlPanelScript.cs" />
+     <Compile Include="Assets\Script\soundsCtrl\MicroPhoneInput.cs" />
+     <Compile Include="Assets\Script\soundsCtrl\soundCtrl.cs" />
+     <Compile Include="Assets\Script\soundsCtrl\SoundToggleScript.cs" />
+     <Compile Include="Assets\Script\test\DebugPanelScript.cs" />
+     <Compile Include="Assets\Script\test\SocketForDebugPanel.cs" />
+     <Compile Include="Assets\Script\utilTool\BaseDialog.cs" />
+     <Compile Include="Assets\Script\utilTool\CommonEvent.cs" />
+     <Compile Include="Assets\Script\utilTool\CutPic.cs" />
+     <Compile Include="Assets\Script\utilTool\DialogPanelScript.cs" />
+     <Compile Include="Assets\Script\utilTool\FileIO.cs" />
+     <Compile Include="Assets\Script\utilTool\GlobalDataScript.cs" />
+     <Compile Include="Assets\Script\utilTool\HideScript.cs" />
+     <Compile Include="Assets\Script\utilTool\MyDebug.cs" />
+     <Compile Include="Assets\Script\utilTool\NaiziHuScript.cs" />
+     <Compile Include="Assets\Script\utilTool\NormalHuScript.cs" />
+     <Compile Include="Assets\Script\utilTool\PrefabManage.cs" />
+     <Compile Include="Assets\Script\utilTool\ShareWechat.cs" />
+     <Compile Include="Assets\Script\utilTool\TipPanelScript.cs" />
+     <Compile Include="Assets\Script\utilTool\TipsManagerScript.cs" />
+     <Compile Include="Assets\Script\utilTool\UI_Rotation.cs" />
+     <Compile Include="Assets\Script\utilTool\UpdateScript.cs" />
+     <Compile Include="Assets\Script\utilTool\WechatOperateScript.cs" />
+     <Compile Include="Assets\UpdateFrame.cs" />
+     <None Include="Assets\Plugins\Android\ShareSDK\res\values\ssdk_oks_strings.xml" />
+     <None Include="Assets\Plugins\Android\ShareSDK\res\values\ssdk_strings.xml" />
+     <None Include="Assets\Plugins\Android\ShareSDK\res\drawable\ssdk_oks_classic_progressbar.xml" />
+     <None Include="Assets\Plugins\Android\ShareSDK\res\drawable\ssdk_oks_classic_platform_cell_back.xml" />
+     <None Include="Assets\Plugins\Android\ShareSDK\res\values\ssdk_oks_color_drawables.xml" />
+     <None Include="Assets\DOTween113\readme.txt" />
+     <None Include="Assets\Plugins\Android\ShareSDK\res\drawable\ssdk_weibo_retry_btn_selector.xml" />
+     <None Include="Assets\Plugins\Android\ShareSDK\res\values\ssdk_instapaper_strings.xml" />
+     <None Include="Assets\DOTween113\DOTween50.xml" />
+     <None Include="Assets\Plugins\Android\ShareSDK\AndroidManifest.xml" />
+     <None Include="Assets\Plugins\Android\ShareSDK\res\drawable\ssdk_weibo_retry_btn_default.xml" />
+     <None Include="Assets\Plugins\Android\ShareSDK\res\drawable\ssdk_weibo_retry_btn_press.xml" />
+     <None Include="Assets\DOTween113\DOTween46.xml" />
+     <None Include="Assets\Plugins\Android\ShareSDK\res\values-en\ssdk_strings.xml" />
+     <None Include="Assets\Plugins\Android\ShareSDK\res\values-en\ssdk_oks_strings.xml" />
+     <None Include="Assets\Resources\shaders\DefaultGrey.shader" />
+     <None Include="Assets\DOTween113\DOTween43.xml" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TestRunner">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.framework">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Timeline">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.HoloLens">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>D:/weipaiclient/Assets/DOTween113/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween43">
+ <HintPath>D:/weipaiclient/Assets/DOTween113/DOTween43.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween46">
+ <HintPath>D:/weipaiclient/Assets/DOTween113/DOTween46.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween50">
+ <HintPath>D:/weipaiclient/Assets/DOTween113/DOTween50.dll</HintPath>
+ </Reference>
+ <Reference Include="LitJson">
+ <HintPath>D:/weipaiclient/Assets/Resources/LitJson.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{C981DD6D-40A9-27FA-9715-AD2F5D90A3E4}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
