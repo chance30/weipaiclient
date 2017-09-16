@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Script/majiangCard/TopAndBottomCardScript.cs.meta
+guid: ce3c79db4d23cc343a8f70ff62d476da
+timeCreated: 1467355974
+=======
+guid: 660c3c1d7238d914d97b6f2159fa5a4c
+timeCreated: 1467336312
+>>>>>>> e032bc1d00b06cccd5ff97ffbcf982b895154fd4:Assets/Script/ThrowMahjong.cs.meta
+licenseType: Pro
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
