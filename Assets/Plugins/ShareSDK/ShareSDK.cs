@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.IO;  
 using System.Text;
 using System.Reflection;
-using UnityEngine.UI;
 
 namespace cn.sharesdk.unity3d
 {
@@ -14,16 +13,17 @@ namespace cn.sharesdk.unity3d
 	/// </summary>
 	public class ShareSDK : MonoBehaviour 
 	{
-		//public Text showLabel;
 		private int reqID;
 		//配置ShareSDK AppKey
 		//注:此处区分仅为demo测试而区分，实际使用时可以不区分安卓或iOS
+		 #if UNITY_ANDROID
+		public string appKey = "moba6b6c6d6";
+		public string appSecret = "b89d2427a3bc7ad1aea1e1e8c1d36bf3";
+		 #elif UNITY_IPHONE
+		public string appKey = "iosv1101";
+		public string appSecret = "";
+		 #endif
 
-		#if UNITY_ANDROID
-		public string appKey = "14a7c5a79c370";
-		#elif UNITY_IPHONE
-		public string appKey = "14abc08290738";
-		#endif
 		public DevInfoSet devInfo;
 		public ShareSDKImpl shareSDKUtils;
 
@@ -35,7 +35,6 @@ namespace cn.sharesdk.unity3d
 
 		void Awake()
 		{				
-			print("ShareSDK Awake");
 			Type type = devInfo.GetType();
 			Hashtable platformConfigs = new Hashtable();
 			FieldInfo[] devInfoFields = type.GetFields();
@@ -60,10 +59,11 @@ namespace cn.sharesdk.unity3d
 
 			#if UNITY_ANDROID
 			shareSDKUtils = new AndroidImpl(gameObject);
+			shareSDKUtils.InitSDK(appKey,appSecret);
 			#elif UNITY_IPHONE
 			shareSDKUtils = new iOSImpl(gameObject);
 			#endif
-			shareSDKUtils.InitSDK(appKey);
+
 			shareSDKUtils.SetPlatformConfig(platformConfigs);
 		}
 		
@@ -75,7 +75,6 @@ namespace cn.sharesdk.unity3d
 		/// </param>
 		private void _Callback (string data)
 		{
-
 			if (data == null) 
 			{
 				return;
@@ -91,7 +90,6 @@ namespace cn.sharesdk.unity3d
 			int reqID = Convert.ToInt32(res["reqID"]);
 			PlatformType platform = (PlatformType)Convert.ToInt32(res["platform"]);
 			int action = Convert.ToInt32(res["action"]);
-		
 			// Success = 1, Fail = 2, Cancel = 3
 			switch(status) 
 			{
@@ -125,7 +123,6 @@ namespace cn.sharesdk.unity3d
 		/// <param name="throwable">Throwable.</param>
 		public void OnError (int reqID, PlatformType platform, int action, Hashtable throwable) 
 		{
-			
 			switch (action) 
 			{
 			case 1: 
@@ -153,7 +150,7 @@ namespace cn.sharesdk.unity3d
 				break;
 			}
 			case 8: 
-			{ // 8 == Platform.ACTION_USER_INFORlog
+			{ // 8 == Platform.ACTION_USER_INFOR
 				if (showUserHandler != null) 
 				{
 					showUserHandler(reqID, ResponseState.Fail, platform, throwable);
@@ -179,14 +176,13 @@ namespace cn.sharesdk.unity3d
 		/// <param name="res">Res.</param>
 		public void OnComplete (int reqID, PlatformType platform, int action, Hashtable res) 
 		{
-			
 			switch (action) 
 			{
 			case 1: 
 			{ // 1 == Platform.ACTION_AUTHORIZING
 				if (authHandler != null) 
 				{
-					authHandler(reqID, ResponseState.Success, platform, null);
+					authHandler(reqID, ResponseState.Success, platform, res);
 				}
 				break;
 			} 
@@ -232,7 +228,6 @@ namespace cn.sharesdk.unity3d
 		/// <param name="action">Action.</param>
 		public void OnCancel (int reqID, PlatformType platform, int action) 
 		{
-			
 			switch (action) 
 			{
 			case 1: 
@@ -283,9 +278,14 @@ namespace cn.sharesdk.unity3d
 		/// </summary>
 		public void InitSDK (String appKey)
 		{			
-			
 			// if you don't add ShareSDK.xml in your assets folder, use the following line
 			shareSDKUtils.InitSDK (appKey);
+		}
+
+		public void InitSDK (String appKey,String appSecret)
+		{			
+			// if you don't add ShareSDK.xml in your assets folder, use the following line
+			shareSDKUtils.InitSDK (appKey,appSecret);
 		}
 
 		/// <summary>
@@ -293,7 +293,6 @@ namespace cn.sharesdk.unity3d
 		/// </summary>
 		public void SetPlatformConfig (Hashtable configInfo)
 		{			
-			
 			shareSDKUtils.SetPlatformConfig (configInfo);			
 		}
 		
@@ -311,7 +310,6 @@ namespace cn.sharesdk.unity3d
 		/// </param>
 		public int Authorize (PlatformType platform)
 		{
-			
 			reqID ++;
 			shareSDKUtils.Authorize(reqID, platform);			
 			return reqID;
@@ -325,7 +323,6 @@ namespace cn.sharesdk.unity3d
 		/// </param>
 		public void CancelAuthorize (PlatformType platform)
 		{
-			
 			shareSDKUtils.CancelAuthorize(platform);			
 		}
 		
@@ -340,17 +337,14 @@ namespace cn.sharesdk.unity3d
 		/// </param>
 		public bool IsAuthorized (PlatformType platform)
 		{
-			
 			return shareSDKUtils.IsAuthorized(platform);			
 		}
 
 		public bool IsClientValid (PlatformType platform)
 		{
-			
 			return shareSDKUtils.IsClientValid(platform);			
 		}
-
-
+		
 		/// <summary>
 		/// Gets the user info.
 		/// </summary>
@@ -363,10 +357,7 @@ namespace cn.sharesdk.unity3d
 		public int GetUserInfo (PlatformType platform)
 		{
 			reqID ++;
-
-			shareSDKUtils.GetUserInfo(reqID, platform);	
-			Debug.Log ("appkey======"+appKey);
-
+			shareSDKUtils.GetUserInfo(reqID, platform);			
 			return reqID;
 		}
 
@@ -384,7 +375,6 @@ namespace cn.sharesdk.unity3d
 		/// </param>
 		public int ShareContent(PlatformType platform, ShareContent content)
 		{
-			
 			reqID ++;
 			shareSDKUtils.ShareContent(reqID, platform, content);			
 			return reqID;
@@ -404,7 +394,6 @@ namespace cn.sharesdk.unity3d
 		/// </param>
 		public int ShareContent(PlatformType[] platforms, ShareContent content)
 		{
-			
 			reqID ++;
 			shareSDKUtils.ShareContent(reqID, platforms, content);			
 			return reqID;
@@ -424,7 +413,6 @@ namespace cn.sharesdk.unity3d
 		/// </param>
 		public int ShowPlatformList (PlatformType[] platforms, ShareContent content, int x, int y)
 		{
-			
 			reqID ++;
 			shareSDKUtils.ShowPlatformList(reqID, platforms, content, x, y);			
 			return reqID;
@@ -449,6 +437,66 @@ namespace cn.sharesdk.unity3d
 			return reqID;
 		}
 
+		/// <summary>
+		/// share according to the name of node<Content> in ShareContent.xml(you can find it in Xcode) [only valid in iOS temporarily][此接口暂时仅支持iOS环境]
+		/// </summary>
+		/// <param name='platform'>
+		/// Platform Type
+		/// </param>
+		/// <param name='contentName'>
+		/// the name of node<Content> in ShareContent.xml file
+		/// </param>
+		/// <param name='customFields'>
+		/// your share customFields which will be replace in ShareContent.xml
+		/// </param>
+		public int ShareWithContentName (PlatformType platform, string contentName, Hashtable customFields)
+		{
+			reqID++;
+			shareSDKUtils.ShareWithContentName (reqID, platform, contentName, customFields);
+			return reqID;
+		}
+
+		/// <summary>
+		/// share according to the name of node<Content> in ShareContent.xml(you can find it in Xcode)   (only valid in iOS temporarily)(此接口暂时仅支持iOS环境)
+		/// </summary>
+		/// </param>
+		/// <param name='contentName'>
+		/// the name of node<Content> in ShareContent.xml file
+		/// </param>
+		/// <param name='customFields'>
+		/// your share customFields which will be replace in ShareContent.xml
+		/// </param>
+		/// <param name='platforms'>
+		/// Platform Types
+		/// </param>
+		/// <param name='x','y'>
+		/// the coordinates of the share menu
+		/// </param>
+		public int ShowPlatformListWithContentName (string contentName, Hashtable customFields, PlatformType[] platforms, int x, int y)
+		{
+			reqID++;
+			shareSDKUtils.ShowPlatformListWithContentName (reqID, contentName, customFields, platforms, x, y);
+			return reqID;
+		}
+
+		/// <summary>
+		/// share according to the name of node<Content> in ShareContent.xml file  (only valid in iOS temporarily)(此接口暂时仅支持iOS环境)
+		/// </summary>
+		/// <param name='platform'>
+		/// Platform Type
+		/// </param>
+		/// <param name='contentName'>
+		/// the name of node<Content> in ShareContent.xml file
+		/// </param>
+		/// <param name='customFields'>
+		/// your share customFields which will be replace in ShareContent.xml
+		/// </param>
+		public int ShowShareContentEditorWithContentName (PlatformType platform, string contentName, Hashtable customFields)
+		{
+			reqID++;
+			shareSDKUtils.ShowShareContentEditorWithContentName (reqID, platform, contentName, customFields);
+			return reqID;
+		}
 		/// <summary>
 		/// Gets the friends.
 		/// </summary>
@@ -480,7 +528,6 @@ namespace cn.sharesdk.unity3d
 		/// <param name="type">Type.</param>
 		public Hashtable GetAuthInfo (PlatformType platform)
 		{
-			
 			return shareSDKUtils.GetAuthInfo (platform);			
 		}
 
@@ -488,10 +535,11 @@ namespace cn.sharesdk.unity3d
 		/// Close the SSO when authorize.
 		/// </summary>
 		/// <param name="open">If set to <c>true</c> open.</param>
-		public void DisableSSO(Boolean open){
+		public void DisableSSO(Boolean open)
+		{
 			shareSDKUtils.DisableSSO (open);			
 		}
-
+			
 		/// <summary>
 		/// Event result listener.
 		/// </summary>

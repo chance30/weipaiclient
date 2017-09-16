@@ -31,8 +31,8 @@ public class LoginSystemScript : MonoBehaviour {
 		SocketEventHandle.getInstance ().LoginCallBack += LoginCallBack;
 		SocketEventHandle.getInstance ().RoomBackResponse += RoomBackResponse;
 		versionText.text ="版本号：" +Application.version;
-		WxPayImpl test = new WxPayImpl(gameObject);
-		test.callTest ("dddddddddddddddddddddddddddd");
+		//WxPayImpl test = new WxPayImpl(gameObject);
+		//test.callTest ("dddddddddddddddddddddddddddd");
 		
 	}
 	

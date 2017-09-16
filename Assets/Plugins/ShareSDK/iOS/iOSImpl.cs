@@ -10,7 +10,7 @@ namespace cn.sharesdk.unity3d
 	public class iOSImpl : ShareSDKImpl
 	{
 		[DllImport("__Internal")]
-		private static extern void __iosShareSDKRegisterAppAndSetPltformsConfig (string appKey,string configInfo);
+		private static extern void __iosShareSDKRegisterAppAndSetPltformsConfig (string appKey, string configInfo);
 		
 		[DllImport("__Internal")]
 		private static extern void __iosShareSDKAuthorize (int reqID, int platType, string observer);
@@ -47,8 +47,16 @@ namespace cn.sharesdk.unity3d
 		
 		[DllImport("__Internal")]
 		private static extern bool __iosShareSDKIsClientInstalled (int platType);
-		
-		
+
+		[DllImport("__Internal")]
+		private static extern void __iosShareSDKShareWithContentName (int reqID, int platform, string contentName, string customFields, string observer);
+
+		[DllImport("__Internal")]
+		private static extern void __iosShareSDKShowShareMenuWithContentName (int reqID, string contentName, string customFields, string platTypes, int x, int y, string observer);
+
+		[DllImport("__Internal")]
+		private static extern void __iosShareSDKShowShareViewWithContentName (int reqID, int platform, string contentName, string customFields, string observer);
+
 		private string _callbackObjectName = "Main Camera";
 		private string _appKey;
 		public iOSImpl (GameObject go) 
@@ -60,9 +68,13 @@ namespace cn.sharesdk.unity3d
 				Console.WriteLine("{0} Exception caught.", e);
 			}
 		}
-
-		
+			
 		public override void InitSDK (String appKey) 
+		{
+			_appKey = appKey;
+		}
+
+		public override void InitSDK (String appKey,String appSecret) 
 		{
 			_appKey = appKey;
 		}
@@ -141,10 +153,38 @@ namespace cn.sharesdk.unity3d
 			__iosShareSDKShowShareView (reqID, (int)platform, content.GetShareParamsStr(), _callbackObjectName);
 			
 		}
+
+		public override void ShareWithContentName (int reqId, PlatformType platform, string contentName, Hashtable customFields)
+		{
+			String customFieldsStr = MiniJSON.jsonEncode(customFields);
+			__iosShareSDKShareWithContentName (reqId, (int)platform, contentName, customFieldsStr,  _callbackObjectName);
+		}
+
+		public override void ShowPlatformListWithContentName (int reqId, string contentName, Hashtable customFields, PlatformType[] platforms, int x, int y)
+		{
+			String customFieldsStr = MiniJSON.jsonEncode(customFields);
+			string platTypesStr = null;
+			if (platforms != null)
+			{
+				List<int> platTypesArr = new List<int>();
+				foreach (PlatformType type in platforms)
+				{
+					platTypesArr.Add((int)type);
+				}
+				platTypesStr = MiniJSON.jsonEncode(platTypesArr.ToArray());
+			}
 		
+			__iosShareSDKShowShareMenuWithContentName (reqId, contentName, customFieldsStr, platTypesStr, x, y, _callbackObjectName);
+		}
+
+		public override void ShowShareContentEditorWithContentName (int reqId, PlatformType platform, string contentName, Hashtable customFields)
+		{
+			String customFieldsStr = MiniJSON.jsonEncode(customFields);
+			__iosShareSDKShowShareViewWithContentName (reqId, (int)platform, contentName, customFieldsStr, _callbackObjectName);
+		}
+
 		public override void GetFriendList (int reqID, PlatformType platform, int count, int page) 
 		{
-			
 			__iosShareSDKGetFriendsList (reqID, (int)platform, count, page, _callbackObjectName);
 		}
 		

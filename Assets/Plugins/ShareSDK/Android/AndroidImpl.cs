@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
-using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine; 
 
 namespace cn.sharesdk.unity3d
 {
@@ -13,12 +12,9 @@ namespace cn.sharesdk.unity3d
 		public AndroidImpl (GameObject go) 
 		{
 			Debug.Log("AndroidImpl  ===>>>  AndroidImpl" );
-
 			try{
-				
 				ssdk = new AndroidJavaObject("cn.sharesdk.unity3d.ShareSDKUtils", go.name, "_Callback");
 			} catch(Exception e) {
-				
 				Console.WriteLine("{0} Exception caught.", e);
 			}
 		}
@@ -32,37 +28,39 @@ namespace cn.sharesdk.unity3d
 			}
 		}
 
+		public override void InitSDK (String appKey,String appSecret) 
+		{
+			Debug.Log("AndroidImpl  ===>>>  InitSDK === " + appKey);
+			if (ssdk != null) 
+			{			
+				ssdk.Call("initSDK", appKey,appSecret);
+			}
+		}
+
 		public override void SetPlatformConfig (Hashtable configs) 
 		{
 			String json = MiniJSON.jsonEncode(configs);
 			Debug.Log("AndroidImpl  ===>>>  SetPlatformConfig === " + json);
-
-			if (ssdk != null) {			
-				ssdk.Call ("setPlatformConfig", json);
-			} else {
-				
+			if (ssdk != null) 
+			{			
+				ssdk.Call("setPlatformConfig", json);
 			}
 		}
 
 		public override void Authorize (int reqID, PlatformType platform) 
 		{
 			Debug.Log("AndroidImpl  ===>>>  Authorize" );
-
 			if (ssdk != null) 
 			{
 				ssdk.Call("authorize", reqID, (int)platform);
-			}else {
 			}
 		}
 
 		public override void CancelAuthorize (PlatformType platform) 
 		{
-			
 			if (ssdk != null) 
 			{
 				ssdk.Call("removeAccount", (int)platform);
-			}else {
-				
 			}
 		}
 
@@ -80,21 +78,16 @@ namespace cn.sharesdk.unity3d
 			if (ssdk != null) 
 			{
 				return ssdk.Call<bool>("isClientValid", (int)platform);
-			}else {
-				
 			}
 			return false;
 		}
 
 		public override void GetUserInfo (int reqID, PlatformType platform) 
 		{
-			Debug.Log("AndroidImpl  ===>>>  ShowUser" + reqID );
-
+			Debug.Log("AndroidImpl  ===>>>  ShowUser" );
 			if (ssdk != null) 
 			{
 				ssdk.Call("showUser", reqID, (int)platform);
-			}else {
-				
 			}
 		}
 
@@ -107,15 +100,12 @@ namespace cn.sharesdk.unity3d
 		public override void ShareContent (int reqID, PlatformType[] platforms, ShareContent content) 
 		{
 			Debug.Log("AndroidImpl  ===>>>  Share" );
-
 			if (ssdk != null) 
 			{
 				foreach (PlatformType platform in platforms)
 				{
 					ssdk.Call("shareContent", reqID, (int)platform, content.GetShareParamsStr());
 				}
-			}else {
-				
 			}
 		}
 
@@ -127,50 +117,37 @@ namespace cn.sharesdk.unity3d
 		public override void ShowShareContentEditor (int reqID, PlatformType platform, ShareContent content) 
 		{
 			Debug.Log("AndroidImpl  ===>>>  OnekeyShare platform ===" + (int)platform );
-
 			if (ssdk != null) 
 			{
 				ssdk.Call("onekeyShare", reqID, (int)platform, content.GetShareParamsStr());
-			}else {
-				
 			}
 		}
 		
 		public override void GetFriendList (int reqID, PlatformType platform, int count, int page) 
 		{
 			Debug.Log("AndroidImpl  ===>>>  GetFriendList" );
-
 			if (ssdk != null) 
 			{
 				ssdk.Call("getFriendList", reqID, (int)platform, count, page);
-			}else {
-
 			}
 		}
 
 		public override void AddFriend (int reqID, PlatformType platform, String account)
 		{
 			Debug.Log("AndroidImpl  ===>>>  FollowFriend" );
-
 			if (ssdk != null) 
 			{
 				ssdk.Call("followFriend", reqID, (int)platform, account);
-			}else {
-				
 			}
 		}
 
 		public override Hashtable GetAuthInfo (PlatformType platform) 
 		{
 			Debug.Log("AndroidImpl  ===>>>  GetAuthInfo" );
-
-
 			if (ssdk != null) 
 			{
 				String result = ssdk.Call<String>("getAuthInfo", (int)platform);
 				return (Hashtable) MiniJSON.jsonDecode(result);
-			}else {
-				
 			}
 			return new Hashtable ();
 		}
@@ -178,13 +155,25 @@ namespace cn.sharesdk.unity3d
 		public override void DisableSSO (Boolean disable)
 		{
 			Debug.Log("AndroidImpl  ===>>>  DisableSSOWhenAuthorize" );
-
 			if (ssdk != null) 
 			{
 				ssdk.Call("disableSSOWhenAuthorize", disable);
-			}else {
-				
 			}
+		}
+
+		public override void ShareWithContentName (int reqId, PlatformType platform, string contentName, Hashtable customFields)
+		{
+			Debug.Log("#WARING : Do not support this feature in Android temporarily" );
+		}
+		
+		public override void ShowPlatformListWithContentName (int reqId, string contentName, Hashtable customFields, PlatformType[] platforms, int x, int y)
+		{
+			Debug.Log("#WARING : Do not support this feature in Android temporarily" );
+		}
+
+		public override void ShowShareContentEditorWithContentName (int reqId, PlatformType platform, string contentName, Hashtable customFields)
+		{
+			Debug.Log("#WARING : Do not support this feature in Android temporarily" );
 		}
 
 	}
