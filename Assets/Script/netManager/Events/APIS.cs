@@ -10,10 +10,10 @@ namespace AssemblyCSharp
 		//public const string UPDATE_INFO_JSON_URL = "http://192.168.0.110:8080/MaJiangManage/images/update.xml";//服务器上最新的软件版本信息存储文件
 		public const string UPDATE_INFO_JSON_URL = "http://www.weipaigame.com/downLoad/appDown/update.xml";//服务器上最新的软件版本信息存储文件
 		//public const string UPDATE_INFO_JSON_URL = "http://127.0.0.1/test/update.xml";
-        public const string chatSocketUrl = "192.168.0.29";
+        public const string chatSocketUrl = "192.168.0.101";
 		//public const string chatSocketUrl = "192.168.0.112";
 		//public const string socketUrl = "118.178.20.36";
-		public const string socketUrl = "192.168.0.29";
+		public const string socketUrl = "192.168.0.101";
 
 		//public const string PIC_PATH = "http://www.weipaigame.com:8080/";
         public const string PIC_PATH = "http://www.weipaigame.com:8080/";
